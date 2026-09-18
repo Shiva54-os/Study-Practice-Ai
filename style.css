@@ -1,12 +1,13 @@
+```css
 /* =========================================
-   SHIVA STUDY AI — PRACTICE
-   MAIN STYLESHEET
-========================================= */
+   SHIVA STUDY AI PRACTICE
+   PROFESSIONAL PURPLE + BLUE THEME
+   ========================================= */
 
 
-/* =========================================
+/* ===============================
    RESET
-========================================= */
+   =============================== */
 
 * {
     margin: 0;
@@ -14,817 +15,1172 @@
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
-    min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
-    color: #111827;
-    display: flex;
-    flex-direction: column;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at 15% 10%, rgba(103, 63, 255, 0.25), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(0, 174, 255, 0.18), transparent 30%),
+        linear-gradient(135deg, #080b1a, #10152d 50%, #090d20);
+
+    color: #f5f7ff;
 }
 
 
-/* =========================================
+/* ===============================
    HEADER
-========================================= */
+   =============================== */
 
-.app-header {
-    width: 100%;
-    background: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
-    padding: 16px 20px;
+.site-header {
     position: sticky;
     top: 0;
     z-index: 100;
+
+    width: 100%;
+
+    background: rgba(8, 11, 28, 0.82);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.brand {
-    max-width: 900px;
+
+.header-content {
+    max-width: 1100px;
     margin: auto;
+
+    min-height: 70px;
+
+    padding: 0 22px;
+
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
 }
 
-.brand h1 {
-    font-size: 22px;
+
+.logo {
+    font-size: 23px;
     font-weight: 800;
-    color: #111827;
+
+    background: linear-gradient(
+        90deg,
+        #8b5cf6,
+        #3b82f6,
+        #22d3ee
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
 }
 
-.brand span {
+
+.header-title {
     font-size: 15px;
     font-weight: 600;
-    color: #2563eb;
+
+    color: #b8c0dc;
 }
 
 
-/* =========================================
-   MAIN CONTAINER
-========================================= */
+/* ===============================
+   MAIN
+   =============================== */
 
-.app-container {
+main {
     width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 30px 20px 50px;
-    flex: 1;
+    min-height: calc(100vh - 130px);
 }
 
-
-/* =========================================
-   SCREENS
-========================================= */
 
 .screen {
     display: none;
 }
+
 
 .screen.active {
     display: block;
 }
 
 
-/* =========================================
+/* ===============================
    HERO
-========================================= */
+   =============================== */
 
-.hero-section {
-    text-align: center;
-    margin-bottom: 32px;
-}
+.hero {
+    max-width: 850px;
 
-.hero-section h2 {
-    font-size: 34px;
-    line-height: 1.2;
-    margin-bottom: 10px;
-    font-weight: 800;
-}
-
-.hero-section p {
-    max-width: 600px;
     margin: 0 auto;
-    color: #6b7280;
+
+    padding: 70px 20px 35px;
+
+    text-align: center;
+}
+
+
+.hero h1 {
+    font-size: clamp(34px, 6vw, 58px);
+
+    line-height: 1.1;
+
+    font-weight: 800;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #bca7ff,
+        #63b3ff
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    margin-bottom: 16px;
+}
+
+
+.hero p {
+    color: #aab3d0;
+
     font-size: 16px;
-    line-height: 1.6;
+
+    line-height: 1.7;
+
+    max-width: 600px;
+
+    margin: auto;
 }
 
 
-/* =========================================
-   FORM CARD
-========================================= */
+/* ===============================
+   SETUP CARD
+   =============================== */
 
-#setupScreen {
-    background: #ffffff;
-    padding: 35px;
-    border-radius: 18px;
-    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
+.setup-card {
+    width: min(92%, 650px);
+
+    margin: 15px auto 60px;
+
+    padding: 32px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 35, 72, 0.92),
+            rgba(17, 22, 50, 0.94)
+        );
+
+    border: 1px solid rgba(139, 92, 246, 0.25);
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.45),
+        0 0 45px rgba(94, 60, 220, 0.08);
+
+    backdrop-filter: blur(20px);
 }
+
+
+/* ===============================
+   FORM GROUP
+   =============================== */
 
 .form-group {
     margin-bottom: 22px;
 }
 
+
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+
+    margin-bottom: 9px;
+
     font-size: 14px;
+
     font-weight: 700;
-    color: #374151;
+
+    color: #dfe4ff;
 }
+
+
+.form-group small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #7f89aa;
+
+    font-size: 12px;
+}
+
+
+/* ===============================
+   INPUTS + SELECTS
+   =============================== */
+
+.form-group select,
+.form-group input {
+    width: 100%;
+
+    min-height: 52px;
+
+    padding: 0 16px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(148, 163, 184, 0.2);
+
+    background: rgba(8, 12, 30, 0.8);
+
+    color: #f5f7ff;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: 0.25s ease;
+}
+
 
 .form-group select {
-    width: 100%;
-    min-height: 50px;
-    padding: 0 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    background: #ffffff;
-    color: #111827;
-    font-size: 15px;
-    outline: none;
     cursor: pointer;
-    transition: border-color 0.2s ease,
-                box-shadow 0.2s ease;
-}
-
-.form-group select:hover {
-    border-color: #9ca3af;
-}
-
-.form-group select:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-}
-
-.form-group select:disabled {
-    background: #f3f4f6;
-    color: #9ca3af;
-    cursor: not-allowed;
 }
 
 
-/* =========================================
+.form-group input::placeholder {
+    color: #69728f;
+}
+
+
+.form-group select:focus,
+.form-group input:focus {
+
+    border-color: #7c5cff;
+
+    box-shadow:
+        0 0 0 3px rgba(124, 92, 255, 0.12),
+        0 0 25px rgba(88, 68, 220, 0.12);
+
+}
+
+
+.form-group select option {
+    background: #12172f;
+
+    color: #ffffff;
+}
+
+
+/* ===============================
    BUTTONS
-========================================= */
+   =============================== */
 
 button {
     font-family: inherit;
 }
 
-.primary-button,
-.secondary-button {
-    min-height: 48px;
+
+.primary-btn,
+.secondary-btn {
+    min-height: 50px;
+
     padding: 0 22px;
-    border-radius: 10px;
+
+    border-radius: 13px;
+
     font-size: 15px;
+
     font-weight: 700;
+
     cursor: pointer;
+
     transition:
-        transform 0.15s ease,
+        transform 0.2s ease,
         box-shadow 0.2s ease,
-        background 0.2s ease;
+        opacity 0.2s ease;
 }
 
-.primary-button {
+
+.primary-btn {
+
     border: none;
-    background: #2563eb;
-    color: #ffffff;
-    box-shadow: 0 5px 14px rgba(37, 99, 235, 0.22);
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #4f46e5,
+            #2563eb
+        );
+
+    box-shadow:
+        0 10px 28px rgba(79, 70, 229, 0.28);
+
 }
 
-.primary-button:hover {
-    background: #1d4ed8;
-    transform: translateY(-1px);
+
+.primary-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 35px rgba(79, 70, 229, 0.38);
+
 }
 
-.primary-button:active,
-.secondary-button:active {
+
+.secondary-btn {
+
+    border: 1px solid rgba(139, 92, 246, 0.35);
+
+    color: #dfe5ff;
+
+    background: rgba(25, 30, 62, 0.7);
+
+}
+
+
+.secondary-btn:hover {
+
+    transform: translateY(-2px);
+
+    background: rgba(45, 48, 90, 0.85);
+
+}
+
+
+.primary-btn:active,
+.secondary-btn:active {
+
     transform: translateY(0);
+
 }
 
-.secondary-button {
-    border: 1px solid #d1d5db;
-    background: #ffffff;
-    color: #374151;
+
+.hidden {
+    display: none !important;
 }
 
-.secondary-button:hover {
-    background: #f9fafb;
-    border-color: #9ca3af;
-}
 
-#startPracticeBtn {
+/* ===============================
+   START BUTTON
+   =============================== */
+
+#startBtn {
     width: 100%;
+
     margin-top: 5px;
+
+    min-height: 55px;
+
+    font-size: 16px;
 }
 
 
-/* =========================================
-   PRACTICE TOP BAR
-========================================= */
+/* ===============================
+   ERROR
+   =============================== */
+
+.error-message {
+
+    display: none;
+
+    margin-top: 16px;
+
+    padding: 13px 15px;
+
+    border-radius: 12px;
+
+    background: rgba(239, 68, 68, 0.1);
+
+    border: 1px solid rgba(239, 68, 68, 0.25);
+
+    color: #ff9b9b;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* ===============================
+   PRACTICE SCREEN
+   =============================== */
+
+#practiceScreen {
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 25px 20px 60px;
+}
+
 
 .practice-topbar {
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 15px;
-    margin-bottom: 18px;
+
+    margin-bottom: 20px;
 }
 
-.practice-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
+
+.practice-topbar > div {
+
+    flex: 1;
+
+    text-align: right;
 }
 
-.practice-info span:first-child {
-    font-size: 15px;
-    font-weight: 700;
-    color: #111827;
+
+#practiceChapterName {
+
+    display: block;
+
+    color: #e8eaff;
+
+    font-size: 16px;
+
+    margin-bottom: 5px;
 }
 
-.practice-info span:last-child {
+
+#questionProgress {
+
+    color: #8e98b8;
+
     font-size: 13px;
-    color: #6b7280;
 }
 
 
-/* =========================================
-   PROGRESS BAR
-========================================= */
+/* ===============================
+   PROGRESS
+   =============================== */
 
-.progress-container {
+.progress-wrapper {
+
     width: 100%;
+
     height: 8px;
-    background: #e5e7eb;
-    border-radius: 20px;
-    overflow: hidden;
+
     margin-bottom: 25px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.08);
 }
+
 
 .progress-bar {
-    width: 0%;
+
+    width: 0;
+
     height: 100%;
-    background: #2563eb;
-    border-radius: 20px;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #4f46e5,
+            #22d3ee
+        );
+
     transition: width 0.3s ease;
 }
 
 
-/* =========================================
-   QUESTION CONTAINER
-========================================= */
+/* ===============================
+   QUESTION CARD
+   =============================== */
 
-#questionContainer {
-    background: #ffffff;
-    border-radius: 18px;
+.question-container {
+
     padding: 30px;
-    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(29, 34, 70, 0.94),
+            rgba(15, 20, 46, 0.95)
+        );
+
+    border: 1px solid rgba(139, 92, 246, 0.2);
+
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.35);
 }
 
-.question-type {
+
+.question-number {
+
     display: inline-block;
-    padding: 6px 10px;
-    border-radius: 7px;
-    background: #eff6ff;
-    color: #2563eb;
-    font-size: 12px;
-    font-weight: 700;
+
     margin-bottom: 15px;
+
+    padding: 7px 12px;
+
+    border-radius: 999px;
+
+    background: rgba(124, 58, 237, 0.12);
+
+    color: #b99cff;
+
+    font-size: 12px;
+
+    font-weight: 700;
 }
+
 
 .question-text {
+
     font-size: 20px;
-    line-height: 1.55;
+
+    line-height: 1.65;
+
     font-weight: 700;
-    color: #111827;
-    margin-bottom: 24px;
+
+    color: #f4f6ff;
+
+    margin-bottom: 25px;
 }
 
 
-/* =========================================
+/* ===============================
    OPTIONS
-========================================= */
+   =============================== */
 
 .options-container {
-    display: flex;
-    flex-direction: column;
+
+    display: grid;
+
     gap: 12px;
 }
+
 
 .option {
+
     width: 100%;
-    padding: 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    background: #ffffff;
+
+    min-height: 58px;
+
+    padding: 12px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
     text-align: left;
-    color: #111827;
-    font-size: 15px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(148, 163, 184, 0.14);
+
+    background: rgba(7, 11, 29, 0.55);
+
+    color: #dce2f7;
+
     cursor: pointer;
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease,
-        transform 0.15s ease;
+
+    font-size: 15px;
+
+    line-height: 1.5;
+
+    transition: 0.2s ease;
 }
+
 
 .option:hover {
-    border-color: #2563eb;
-    background: #f8fbff;
+
+    border-color: rgba(124, 92, 255, 0.55);
+
+    background: rgba(65, 52, 130, 0.18);
+
 }
+
 
 .option.selected {
-    border-color: #2563eb;
-    background: #eff6ff;
+
+    border-color: #7c5cff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124, 58, 237, 0.22),
+            rgba(37, 99, 235, 0.18)
+        );
+
+    box-shadow:
+        0 0 20px rgba(124, 92, 255, 0.12);
 }
 
 
-/* =========================================
-   TEXT ANSWER
-========================================= */
+.option-letter {
 
-.answer-input {
-    width: 100%;
-    min-height: 130px;
-    padding: 15px;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    resize: vertical;
-    font-family: inherit;
-    font-size: 15px;
-    line-height: 1.5;
-    outline: none;
-}
+    width: 32px;
 
-.answer-input:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-}
+    height: 32px;
 
+    flex: 0 0 32px;
 
-/* =========================================
-   MATCH THE FOLLOWING
-========================================= */
-
-.match-container {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
 
-.match-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
+    align-items: center;
 
-.match-item {
-    padding: 14px;
-    border: 1px solid #d1d5db;
+    justify-content: center;
+
     border-radius: 9px;
-    background: #f9fafb;
-    font-size: 14px;
-    line-height: 1.5;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    color: #a9b5d7;
+
+    font-weight: 800;
+
+    font-size: 13px;
 }
 
 
-/* =========================================
-   CASE BASED
-========================================= */
+.option.selected .option-letter {
 
-.case-passage {
-    background: #f9fafb;
-    border-left: 4px solid #2563eb;
-    padding: 18px;
-    border-radius: 8px;
-    margin-bottom: 22px;
-    color: #374151;
-    font-size: 15px;
-    line-height: 1.7;
+    background: #7657ee;
+
+    color: white;
 }
 
 
-/* =========================================
+/* ===============================
    PRACTICE ACTIONS
-========================================= */
+   =============================== */
 
 .practice-actions {
+
     display: flex;
+
     justify-content: flex-end;
+
+    gap: 12px;
+
     margin-top: 20px;
 }
 
-#nextQuestionBtn {
-    min-width: 120px;
+
+/* ===============================
+   RESULT SCREEN
+   =============================== */
+
+#resultScreen {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 55px 20px 70px;
 }
 
-
-/* =========================================
-   RESULT SCREEN
-========================================= */
 
 .result-header {
+
     text-align: center;
-    margin-bottom: 25px;
+
+    margin-bottom: 30px;
 }
 
-.result-header h2 {
-    font-size: 30px;
-    margin-bottom: 8px;
+
+.result-header h1 {
+
+    font-size: clamp(30px, 5vw, 44px);
+
+    margin-bottom: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #a78bfa,
+            #60a5fa
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
 }
+
 
 .result-header p {
-    color: #6b7280;
+
+    color: #8f99b8;
 }
 
 
-/* =========================================
+/* ===============================
    SCORE CARD
-========================================= */
+   =============================== */
 
 .score-card {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 30px;
-    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
-    text-align: center;
-    margin-bottom: 25px;
-}
 
-.score-number {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 25px;
-    border-radius: 50%;
-    background: #eff6ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.score-number span {
-    font-size: 30px;
-    font-weight: 800;
-    color: #2563eb;
-}
-
-.score-details {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+
+    margin-bottom: 40px;
+}
+
+
+.score-item {
+
+    padding: 22px 15px;
+
+    text-align: center;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(31, 36, 73, 0.9),
+            rgba(16, 21, 47, 0.9)
+        );
+
+    border: 1px solid rgba(139, 92, 246, 0.17);
+}
+
+
+.score-item span {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #8f99b8;
+
+    font-size: 13px;
+}
+
+
+.score-item strong {
+
+    font-size: 25px;
+
+    color: #e9eaff;
+}
+
+
+/* ===============================
+   REVIEW
+   =============================== */
+
+.review-section h2 {
+
+    margin-bottom: 18px;
+
+    color: #eef0ff;
+}
+
+
+#reviewContainer {
+
+    display: grid;
+
     gap: 15px;
 }
 
-.score-details div {
-    padding: 15px;
-    background: #f9fafb;
-    border-radius: 10px;
-}
 
-.score-details strong {
-    display: block;
-    font-size: 20px;
-    margin-bottom: 5px;
-}
+.review-card {
 
-.score-details span {
-    font-size: 13px;
-    color: #6b7280;
+    padding: 22px;
+
+    border-radius: 17px;
+
+    background:
+        rgba(20, 25, 52, 0.9);
+
+    border: 1px solid rgba(148, 163, 184, 0.12);
 }
 
 
-/* =========================================
-   REVIEW
-========================================= */
+.review-question {
 
-.review-section {
-    margin-top: 25px;
-}
+    color: #f0f2ff;
 
-.review-section h3 {
-    font-size: 22px;
+    line-height: 1.6;
+
     margin-bottom: 15px;
 }
 
-#reviewContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 
-.review-card {
-    background: #ffffff;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.06);
-    border: 1px solid #e5e7eb;
-}
+.review-answer,
+.review-correct,
+.review-explanation {
 
-.review-card.correct {
-    border-left: 4px solid #16a34a;
-}
+    padding: 11px 13px;
 
-.review-card.wrong {
-    border-left: 4px solid #dc2626;
-}
+    margin-top: 8px;
 
-.review-question {
-    font-weight: 700;
-    line-height: 1.5;
-    margin-bottom: 12px;
-}
+    border-radius: 10px;
 
-.review-answer {
     font-size: 14px;
-    line-height: 1.6;
-    margin-top: 7px;
+
+    line-height: 1.55;
 }
 
-.review-answer strong {
-    color: #374151;
+
+.review-answer.correct {
+
+    background: rgba(34, 197, 94, 0.08);
+
+    color: #8ff0ad;
+
+    border: 1px solid rgba(34, 197, 94, 0.16);
 }
+
+
+.review-answer.wrong {
+
+    background: rgba(239, 68, 68, 0.08);
+
+    color: #ffaaa9;
+
+    border: 1px solid rgba(239, 68, 68, 0.16);
+}
+
+
+.review-correct {
+
+    background: rgba(59, 130, 246, 0.08);
+
+    color: #9fc5ff;
+
+    border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
 
 .review-explanation {
-    margin-top: 12px;
-    padding: 12px;
-    border-radius: 8px;
-    background: #f9fafb;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #4b5563;
+
+    background: rgba(124, 58, 237, 0.07);
+
+    color: #c7b9f7;
+
+    border: 1px solid rgba(124, 58, 237, 0.13);
 }
 
 
-/* =========================================
+/* ===============================
    RESULT ACTIONS
-========================================= */
+   =============================== */
 
 .result-actions {
+
     display: flex;
+
     justify-content: center;
+
     gap: 12px;
-    margin-top: 30px;
+
+    margin-top: 35px;
 }
 
 
-/* =========================================
-   LOADING SCREEN
-========================================= */
+/* ===============================
+   LOADING
+   =============================== */
 
 #loadingScreen {
-    min-height: 450px;
+
+    min-height: 70vh;
+
     align-items: center;
+
     justify-content: center;
+
+    text-align: center;
 }
 
+
 #loadingScreen.active {
+
     display: flex;
 }
 
-.loading-box {
-    background: #ffffff;
-    border-radius: 18px;
-    padding: 40px 30px;
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
+
+.loader-container {
+
+    width: min(90%, 500px);
+
+    padding: 35px;
 }
 
-.loading-box h2 {
-    margin: 20px 0 8px;
-    font-size: 23px;
-}
-
-.loading-box p {
-    color: #6b7280;
-    line-height: 1.5;
-}
-
-
-/* =========================================
-   LOADER
-========================================= */
 
 .loader {
-    width: 45px;
-    height: 45px;
-    margin: 0 auto;
-    border: 4px solid #e5e7eb;
-    border-top-color: #2563eb;
+
+    width: 55px;
+
+    height: 55px;
+
+    margin: 0 auto 22px;
+
     border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+
+    border: 4px solid rgba(255, 255, 255, 0.1);
+
+    border-top-color: #8b5cf6;
+
+    border-right-color: #3b82f6;
+
+    animation: spin 0.9s linear infinite;
 }
 
+
+.loader-container h2 {
+
+    margin-bottom: 9px;
+
+    color: #eef0ff;
+}
+
+
+.loader-container p {
+
+    color: #8791b1;
+
+    font-size: 14px;
+}
+
+
 @keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
 
     to {
         transform: rotate(360deg);
     }
+
 }
 
 
-/* =========================================
-   ERROR MESSAGE
-========================================= */
-
-.error-message {
-    display: none;
-    margin-top: 20px;
-    padding: 14px 16px;
-    border-radius: 10px;
-    background: #fef2f2;
-    border: 1px solid #fecaca;
-    color: #b91c1c;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-.error-message.show {
-    display: block;
-}
-
-
-/* =========================================
+/* ===============================
    FOOTER
-========================================= */
+   =============================== */
 
-.app-footer {
-    padding: 20px;
+footer {
+
+    padding: 25px 20px;
+
     text-align: center;
-    color: #6b7280;
-    font-size: 13px;
-    border-top: 1px solid #e5e7eb;
-    background: #ffffff;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    color: #68728f;
+
+    font-size: 12px;
 }
 
 
-/* =========================================
+/* ===============================
    TABLET
-========================================= */
+   =============================== */
 
-@media (max-width: 700px) {
+@media (max-width: 750px) {
 
-    .app-container {
-        padding: 20px 15px 40px;
+    .hero {
+        padding-top: 50px;
     }
 
-    #setupScreen {
-        padding: 25px 20px;
+
+    .setup-card {
+        padding: 24px;
     }
 
-    .hero-section h2 {
-        font-size: 28px;
+
+    .question-container {
+        padding: 23px;
     }
 
-    #questionContainer {
-        padding: 22px 18px;
+
+    .score-card {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
-    .question-text {
-        font-size: 18px;
-    }
-
-    .practice-topbar {
-        align-items: flex-start;
-    }
-
-    .practice-info {
-        text-align: right;
-    }
 }
 
 
-/* =========================================
+/* ===============================
    MOBILE
-========================================= */
+   =============================== */
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
 
-    .app-header {
-        padding: 14px 15px;
+    .header-content {
+        min-height: 62px;
+
+        padding: 0 16px;
     }
 
-    .brand h1 {
+
+    .logo {
         font-size: 20px;
     }
 
-    .brand span {
+
+    .header-title {
+        font-size: 13px;
+    }
+
+
+    .hero {
+        padding:
+            45px 18px
+            25px;
+    }
+
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+
+    .hero p {
         font-size: 14px;
     }
 
-    .app-container {
-        padding: 15px 12px 30px;
+
+    .setup-card {
+        width: calc(100% - 28px);
+
+        padding: 21px;
+
+        border-radius: 20px;
     }
 
-    #setupScreen {
-        padding: 22px 16px;
-        border-radius: 14px;
-    }
-
-    .hero-section {
-        margin-bottom: 25px;
-    }
-
-    .hero-section h2 {
-        font-size: 25px;
-    }
-
-    .hero-section p {
-        font-size: 14px;
-    }
 
     .form-group {
         margin-bottom: 18px;
     }
 
-    .form-group select {
-        min-height: 48px;
+
+    .form-group select,
+    .form-group input {
+        min-height: 50px;
+
         font-size: 14px;
     }
 
-    .primary-button,
-    .secondary-button {
-        min-height: 46px;
-        padding: 0 17px;
-        font-size: 14px;
+
+    #practiceScreen {
+        padding:
+            18px 14px 45px;
     }
+
 
     .practice-topbar {
-        gap: 10px;
+        align-items: flex-start;
     }
 
-    .practice-topbar .secondary-button {
-        padding: 0 12px;
+
+    .practice-topbar > div {
+        text-align: right;
     }
 
-    .practice-info span:first-child {
-        font-size: 13px;
+
+    .question-container {
+        padding: 20px;
+
+        border-radius: 18px;
     }
 
-    .practice-info span:last-child {
-        font-size: 12px;
-    }
-
-    #questionContainer {
-        padding: 18px 15px;
-        border-radius: 14px;
-    }
 
     .question-text {
         font-size: 17px;
+
+        line-height: 1.55;
     }
 
+
     .option {
-        padding: 13px;
+        min-height: 54px;
+
         font-size: 14px;
     }
 
+
+    .practice-actions {
+        display: grid;
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .practice-actions button {
+        width: 100%;
+    }
+
+
+    #resultScreen {
+        padding:
+            40px 14px 55px;
+    }
+
+
     .score-card {
-        padding: 22px 15px;
+        gap: 10px;
     }
 
-    .score-details {
-        gap: 8px;
+
+    .score-item {
+        padding: 18px 10px;
     }
 
-    .score-details div {
-        padding: 12px 7px;
+
+    .score-item strong {
+        font-size: 22px;
     }
 
-    .score-details strong {
-        font-size: 17px;
-    }
-
-    .score-details span {
-        font-size: 11px;
-    }
 
     .result-actions {
-        flex-direction: column;
+        display: grid;
+
+        grid-template-columns: 1fr;
     }
+
 
     .result-actions button {
         width: 100%;
     }
 
-    .match-row {
-        grid-template-columns: 1fr;
+
+    .review-card {
+        padding: 17px;
     }
 
-    .practice-actions {
-        justify-content: stretch;
-    }
-
-    #nextQuestionBtn {
-        width: 100%;
-    }
 }
+```
