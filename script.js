@@ -1,12 +1,10 @@
-/* =========================================
-   SHIVA STUDY AI — PRACTICE
-   FRONTEND JAVASCRIPT
-========================================= */
+```javascript
+// SHIVA STUDY AI PRACTICE
+// Frontend JavaScript
 
-
-/* =========================================
-   DOM ELEMENTS
-========================================= */
+// ===============================
+// DOM ELEMENTS
+// ===============================
 
 const setupScreen = document.getElementById("setupScreen");
 const practiceScreen = document.getElementById("practiceScreen");
@@ -14,966 +12,197 @@ const resultScreen = document.getElementById("resultScreen");
 const loadingScreen = document.getElementById("loadingScreen");
 
 const subjectSelect = document.getElementById("subjectSelect");
-const chapterSelect = document.getElementById("chapterSelect");
+const chapterInput = document.getElementById("chapterInput");
 const practiceTypeSelect = document.getElementById("practiceTypeSelect");
 const difficultySelect = document.getElementById("difficultySelect");
 const questionCountSelect = document.getElementById("questionCountSelect");
 
-const startPracticeBtn = document.getElementById("startPracticeBtn");
-const backToSetupBtn = document.getElementById("backToSetupBtn");
-const nextQuestionBtn = document.getElementById("nextQuestionBtn");
+const startBtn = document.getElementById("startBtn");
+const backBtn = document.getElementById("backBtn");
+const nextBtn = document.getElementById("nextBtn");
+const submitBtn = document.getElementById("submitBtn");
 
 const newPracticeBtn = document.getElementById("newPracticeBtn");
 const retestBtn = document.getElementById("retestBtn");
 
-const practiceChapterName =
-    document.getElementById("practiceChapterName");
+const practiceChapterName = document.getElementById("practiceChapterName");
+const questionProgress = document.getElementById("questionProgress");
+const progressBar = document.getElementById("progressBar");
 
-const questionProgress =
-    document.getElementById("questionProgress");
+const questionContainer = document.getElementById("questionContainer");
 
-const progressBar =
-    document.getElementById("progressBar");
+const scoreValue = document.getElementById("scoreValue");
+const correctValue = document.getElementById("correctValue");
+const wrongValue = document.getElementById("wrongValue");
+const accuracyValue = document.getElementById("accuracyValue");
 
-const questionContainer =
-    document.getElementById("questionContainer");
-
-const scoreValue =
-    document.getElementById("scoreValue");
-
-const correctValue =
-    document.getElementById("correctValue");
-
-const wrongValue =
-    document.getElementById("wrongValue");
-
-const accuracyValue =
-    document.getElementById("accuracyValue");
-
-const reviewContainer =
-    document.getElementById("reviewContainer");
-
-const errorMessage =
-    document.getElementById("errorMessage");
-
-const loadingMessage =
-    document.getElementById("loadingMessage");
+const reviewContainer = document.getElementById("reviewContainer");
+const errorMessage = document.getElementById("errorMessage");
 
 
-/* =========================================
-   APPLICATION STATE
-========================================= */
+// ===============================
+// STATE
+// ===============================
 
-let currentQuestions = [];
 let currentQuestionIndex = 0;
+let questions = [];
 let userAnswers = [];
-let currentSettings = null;
-let isAnswerLocked = false;
 
-
-/* =========================================
-   CLASS 10 CBSE CHAPTER DATA
-========================================= */
-
-const chapterData = {
-
-    science: [
-
-        {
-            value: "chemical-reactions",
-            name: "Chemical Reactions and Equations"
-        },
-
-        {
-            value: "acids-bases-salts",
-            name: "Acids, Bases and Salts"
-        },
-
-        {
-            value: "metals-non-metals",
-            name: "Metals and Non-metals"
-        },
-
-        {
-            value: "carbon-compounds",
-            name: "Carbon and Its Compounds"
-        },
-
-        {
-            value: "life-processes",
-            name: "Life Processes"
-        },
-
-        {
-            value: "control-coordination",
-            name: "Control and Coordination"
-        },
-
-        {
-            value: "how-do-organisms-reproduce",
-            name: "How Do Organisms Reproduce?"
-        },
-
-        {
-            value: "heredity",
-            name: "Heredity"
-        },
-
-        {
-            value: "light-reflection-refraction",
-            name: "Light – Reflection and Refraction"
-        },
-
-        {
-            value: "human-eye-colourful-world",
-            name: "The Human Eye and the Colourful World"
-        },
-
-        {
-            value: "electricity",
-            name: "Electricity"
-        },
-
-        {
-            value: "magnetic-effects-current",
-            name: "Magnetic Effects of Electric Current"
-        },
-
-        {
-            value: "our-environment",
-            name: "Our Environment"
-        }
-
-    ],
-
-
-    mathematics: [
-
-        {
-            value: "real-numbers",
-            name: "Real Numbers"
-        },
-
-        {
-            value: "polynomials",
-            name: "Polynomials"
-        },
-
-        {
-            value: "pair-linear-equations",
-            name: "Pair of Linear Equations in Two Variables"
-        },
-
-        {
-            value: "quadratic-equations",
-            name: "Quadratic Equations"
-        },
-
-        {
-            value: "arithmetic-progressions",
-            name: "Arithmetic Progressions"
-        },
-
-        {
-            value: "triangles",
-            name: "Triangles"
-        },
-
-        {
-            value: "coordinate-geometry",
-            name: "Coordinate Geometry"
-        },
-
-        {
-            value: "introduction-trigonometry",
-            name: "Introduction to Trigonometry"
-        },
-
-        {
-            value: "applications-trigonometry",
-            name: "Some Applications of Trigonometry"
-        },
-
-        {
-            value: "circles",
-            name: "Circles"
-        },
-
-        {
-            value: "areas-related-circles",
-            name: "Areas Related to Circles"
-        },
-
-        {
-            value: "surface-areas-volumes",
-            name: "Surface Areas and Volumes"
-        },
-
-        {
-            value: "statistics",
-            name: "Statistics"
-        },
-
-        {
-            value: "probability",
-            name: "Probability"
-        }
-
-    ],
-
-
-    "social-science": [
-
-        {
-            value: "nationalism-india",
-            name: "Nationalism in India"
-        },
-
-        {
-            value: "european-nationalism",
-            name: "The Rise of Nationalism in Europe"
-        },
-
-        {
-            value: "global-world",
-            name: "The Making of a Global World"
-        },
-
-        {
-            value: "industrialisation",
-            name: "The Age of Industrialisation"
-        },
-
-        {
-            value: "print-culture",
-            name: "Print Culture and the Modern World"
-        },
-
-        {
-            value: "power-sharing",
-            name: "Power Sharing"
-        },
-
-        {
-            value: "federalism",
-            name: "Federalism"
-        },
-
-        {
-            value: "gender-religion-caste",
-            name: "Gender, Religion and Caste"
-        },
-
-        {
-            value: "political-parties",
-            name: "Political Parties"
-        },
-
-        {
-            value: "outcomes-democracy",
-            name: "Outcomes of Democracy"
-        },
-
-        {
-            value: "development",
-            name: "Development"
-        },
-
-        {
-            value: "sectors-economy",
-            name: "Sectors of the Indian Economy"
-        },
-
-        {
-            value: "money-credit",
-            name: "Money and Credit"
-        },
-
-        {
-            value: "globalisation",
-            name: "Globalisation and the Indian Economy"
-        },
-
-        {
-            value: "consumer-rights",
-            name: "Consumer Rights"
-        },
-
-        {
-            value: "resources-development",
-            name: "Resources and Development"
-        },
-
-        {
-            value: "forest-wildlife",
-            name: "Forest and Wildlife Resources"
-        },
-
-        {
-            value: "water-resources",
-            name: "Water Resources"
-        },
-
-        {
-            value: "agriculture",
-            name: "Agriculture"
-        },
-
-        {
-            value: "minerals-energy",
-            name: "Minerals and Energy Resources"
-        },
-
-        {
-            value: "manufacturing-industries",
-            name: "Manufacturing Industries"
-        },
-
-        {
-            value: "lifelines-economy",
-            name: "Lifelines of National Economy"
-        }
-
-    ],
-
-
-    english: [
-
-        {
-            value: "a-letter-to-god",
-            name: "A Letter to God"
-        },
-
-        {
-            value: "nelson-mandela",
-            name: "Nelson Mandela: Long Walk to Freedom"
-        },
-
-        {
-            value: "two-stories-flying",
-            name: "Two Stories About Flying"
-        },
-
-        {
-            value: "diary-anne-frank",
-            name: "From the Diary of Anne Frank"
-        },
-
-        {
-            value: "hundred-dresses-one",
-            name: "The Hundred Dresses – I"
-        },
-
-        {
-            value: "hundred-dresses-two",
-            name: "The Hundred Dresses – II"
-        },
-
-        {
-            value: "glimpses-india",
-            name: "Glimpses of India"
-        },
-
-        {
-            value: "mijbil-otter",
-            name: "Mijbil the Otter"
-        },
-
-        {
-            value: "madam-rides-bus",
-            name: "Madam Rides the Bus"
-        },
-
-        {
-            value: "sermon-benares",
-            name: "The Sermon at Benares"
-        },
-
-        {
-            value: "proposal",
-            name: "The Proposal"
-        }
-
-    ],
-
-
-    hindi: [
-
-        {
-            value: "surdas",
-            name: "सूरदास"
-        },
-
-        {
-            value: "ram-lakshman-parshuram",
-            name: "राम-लक्ष्मण-परशुराम संवाद"
-        },
-
-        {
-            value: "aatmkathya",
-            name: "आत्मकथ्य"
-        },
-
-        {
-            value: "utsah-at-nahi",
-            name: "उत्साह और अट नहीं रही"
-        },
-
-        {
-            value: "yah-danturit-muskan",
-            name: "यह दंतुरित मुस्कान"
-        },
-
-        {
-            value: "phasal",
-            name: "फसल"
-        },
-
-        {
-            value: "sangathak",
-            name: "संगतकार"
-        }
-
-    ]
-
+let currentSettings = {
+    subject: "",
+    chapter: "",
+    practiceType: "",
+    difficulty: "",
+    questionCount: 25
 };
 
 
-/* =========================================
-   TEMPORARY DEMO QUESTIONS
-========================================= */
+// ===============================
+// DEMO QUESTION BANK
+// TEMPORARY FRONTEND TEST DATA
+// ===============================
 
 const demoQuestionBank = {
 
-    "chemical-reactions": [
+    Science: {
 
-        {
-            type: "mcq",
-
-            question:
-                "Which gas is generally released when a metal reacts with a dilute acid?",
-
-            options: [
-                "Oxygen",
-                "Hydrogen",
-                "Carbon dioxide",
-                "Nitrogen"
-            ],
-
-            answer: 1,
-
-            explanation:
-                "Many metals react with dilute acids to produce a salt and hydrogen gas."
-        },
-
-        {
-            type: "mcq",
-
-            question:
-                "A reaction in which two or more substances combine to form a single product is called:",
-
-            options: [
-                "Decomposition reaction",
-                "Displacement reaction",
-                "Combination reaction",
-                "Double displacement reaction"
-            ],
-
-            answer: 2,
-
-            explanation:
-                "A combination reaction produces one product from two or more reactants."
-        },
-
-        {
-            type: "mcq",
-
-            question:
-                "Which type of reaction involves the breakdown of a compound into simpler substances?",
-
-            options: [
-                "Combination reaction",
-                "Decomposition reaction",
-                "Displacement reaction",
-                "Neutralisation reaction"
-            ],
-
-            answer: 1,
-
-            explanation:
-                "A decomposition reaction involves the breakdown of a compound into simpler substances."
-        }
-
-    ],
-
-
-    "acids-bases-salts": [
-
-        {
-            type: "mcq",
-
-            question:
-                "Which acid is present in lemon juice?",
-
-            options: [
-                "Acetic acid",
-                "Citric acid",
-                "Lactic acid",
-                "Hydrochloric acid"
-            ],
-
-            answer: 1,
-
-            explanation:
-                "Lemon juice contains citric acid."
-        },
-
-        {
-            type: "mcq",
-
-            question:
-                "A base that dissolves in water is called:",
-
-            options: [
-                "Salt",
-                "Acid",
-                "Alkali",
-                "Indicator"
-            ],
-
-            answer: 2,
-
-            explanation:
-                "An alkali is a base that dissolves in water."
-        },
-
-        {
-            type: "mcq",
-
-            question:
-                "What is the approximate pH of a neutral solution at room temperature?",
-
-            options: [
-                "0",
-                "5",
-                "7",
-                "14"
-            ],
-
-            answer: 2,
-
-            explanation:
-                "A neutral solution has a pH of approximately 7 at room temperature."
-        }
-
-    ],
-
-
-    "quadratic-equations": [
-
-        {
-            type: "mcq",
-
-            question:
-                "The standard form of a quadratic equation is:",
-
-            options: [
-                "ax + b = 0",
-                "ax² + bx + c = 0, where a ≠ 0",
-                "ax³ + bx² + c = 0",
-                "a/x + b = 0"
-            ],
-
-            answer: 1,
-
-            explanation:
-                "A quadratic equation has the standard form ax² + bx + c = 0, where a is not zero."
-        },
-
-        {
-            type: "mcq",
-
-            question:
-                "If the discriminant of a quadratic equation is zero, the equation has:",
-
-            options: [
-                "Two distinct real roots",
-                "No real roots",
-                "Two equal real roots",
-                "Three real roots"
-            ],
-
-            answer: 2,
-
-            explanation:
-                "When the discriminant is zero, the quadratic equation has two equal real roots."
-        },
-
-        {
-            type: "mcq",
-
-            question:
-                "The degree of a quadratic polynomial is:",
-
-            options: [
-                "1",
-                "2",
-                "3",
-                "0"
-            ],
-
-            answer: 1,
-
-            explanation:
-                "The highest power of the variable in a quadratic polynomial is 2."
-        }
-
-    ]
-
-};
-
-
-/* =========================================
-   SCREEN MANAGEMENT
-========================================= */
-
-function showScreen(screenToShow) {
-
-    const screens = [
-        setupScreen,
-        practiceScreen,
-        resultScreen,
-        loadingScreen
-    ];
-
-    screens.forEach(function(screen) {
-
-        if (screen) {
-            screen.classList.remove("active");
-        }
-
-    });
-
-    if (screenToShow) {
-        screenToShow.classList.add("active");
-    }
-
-    clearError();
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-
-/* =========================================
-   ERROR HANDLING
-========================================= */
-
-function showError(message) {
-
-    errorMessage.textContent = message;
-
-    errorMessage.classList.add("show");
-}
-
-
-function clearError() {
-
-    errorMessage.textContent = "";
-
-    errorMessage.classList.remove("show");
-}
-
-
-/* =========================================
-   SUBJECT → CHAPTER
-   FIXED VERSION
-========================================= */
-
-subjectSelect.addEventListener("change", function() {
-
-    const selectedSubject = this.value;
-
-    chapterSelect.innerHTML = "";
-
-    const defaultOption =
-        document.createElement("option");
-
-    defaultOption.value = "";
-
-    defaultOption.textContent =
-        "Select Chapter";
-
-    chapterSelect.appendChild(defaultOption);
-
-    chapterSelect.disabled = true;
-
-    clearError();
-
-    if (!selectedSubject) {
-        return;
-    }
-
-    const chapters =
-        chapterData[selectedSubject];
-
-    if (!Array.isArray(chapters) || chapters.length === 0) {
-
-        showError(
-            "No chapters are available for this subject yet."
-        );
-
-        return;
-    }
-
-    chapters.forEach(function(chapter) {
-
-        const option =
-            document.createElement("option");
-
-        option.value =
-            chapter.value;
-
-        option.textContent =
-            chapter.name;
-
-        chapterSelect.appendChild(option);
-
-    });
-
-    chapterSelect.disabled = false;
-
-});
-
-
-/* =========================================
-   SETUP VALIDATION
-========================================= */
-
-function validateSetup() {
-
-    clearError();
-
-    if (!subjectSelect.value) {
-
-        showError(
-            "Please select a subject."
-        );
-
-        return false;
-    }
-
-    if (!chapterSelect.value) {
-
-        showError(
-            "Please select a chapter."
-        );
-
-        return false;
-    }
-
-    if (!practiceTypeSelect.value) {
-
-        showError(
-            "Please select a practice type."
-        );
-
-        return false;
-    }
-
-    if (!difficultySelect.value) {
-
-        showError(
-            "Please select a difficulty."
-        );
-
-        return false;
-    }
-
-    if (!questionCountSelect.value) {
-
-        showError(
-            "Please select the number of questions."
-        );
-
-        return false;
-    }
-
-    return true;
-}
-
-
-/* =========================================
-   GET CHAPTER NAME
-========================================= */
-
-function getSelectedChapterName() {
-
-    const selectedSubject =
-        subjectSelect.value;
-
-    const selectedChapter =
-        chapterSelect.value;
-
-    const chapters =
-        chapterData[selectedSubject] || [];
-
-    const chapter =
-        chapters.find(function(item) {
-
-            return item.value === selectedChapter;
-
-        });
-
-    if (chapter) {
-        return chapter.name;
-    }
-
-    return "Selected Chapter";
-}
-
-
-/* =========================================
-   CREATE TEMPORARY QUESTIONS
-========================================= */
-
-function createTemporaryQuestions(settings) {
-
-    const chapterQuestions =
-        demoQuestionBank[settings.chapter] || [];
-
-    let questions =
-        [...chapterQuestions];
-
-    if (questions.length === 0) {
-
-        questions = [
-
+        "Chemical Reactions and Equations": [
             {
-                type: "mcq",
-
-                question:
-                    "This is a temporary practice question. AI-generated questions will be connected in the backend phase.",
-
+                question: "Which type of reaction occurs when two or more substances combine to form a single product?",
                 options: [
-                    "Option A",
-                    "Option B",
-                    "Option C",
-                    "Option D"
+                    "Decomposition reaction",
+                    "Combination reaction",
+                    "Displacement reaction",
+                    "Double displacement reaction"
                 ],
-
-                answer: 0,
-
-                explanation:
-                    "This is temporary demo data. The final website will use chapter-specific AI-generated questions."
+                answer: 1,
+                explanation: "A combination reaction is a reaction in which two or more substances combine to form a single product."
+            },
+            {
+                question: "Which gas is generally released when a metal reacts with a dilute acid?",
+                options: [
+                    "Oxygen",
+                    "Nitrogen",
+                    "Hydrogen",
+                    "Carbon dioxide"
+                ],
+                answer: 2,
+                explanation: "Many metals react with dilute acids to produce a salt and hydrogen gas."
+            },
+            {
+                question: "A reaction in which a substance breaks down into simpler substances is called:",
+                options: [
+                    "Combination reaction",
+                    "Decomposition reaction",
+                    "Displacement reaction",
+                    "Neutralisation reaction"
+                ],
+                answer: 1,
+                explanation: "A decomposition reaction involves the breakdown of one compound into simpler substances."
             }
+        ]
 
-        ];
-    }
+    },
 
-    const requiredCount =
-        Number(settings.questionCount);
+    Mathematics: {
 
-    const generatedQuestions = [];
+        "Real Numbers": [
+            {
+                question: "Which of the following is an irrational number?",
+                options: [
+                    "2",
+                    "0.5",
+                    "√2",
+                    "4"
+                ],
+                answer: 2,
+                explanation: "√2 cannot be expressed as a rational number and is therefore irrational."
+            },
+            {
+                question: "The HCF of two positive integers can be found using:",
+                options: [
+                    "Euclid's division algorithm",
+                    "Only factorisation",
+                    "Only multiplication",
+                    "Only subtraction"
+                ],
+                answer: 0,
+                explanation: "Euclid's division algorithm is used to find the HCF of two positive integers."
+            },
+            {
+                question: "A rational number has a terminating decimal expansion when the denominator in lowest form has prime factors:",
+                options: [
+                    "Only 2 and/or 5",
+                    "Only 3",
+                    "Only 7",
+                    "Any prime number"
+                ],
+                answer: 0,
+                explanation: "A rational number has a terminating decimal expansion when its denominator in lowest form has no prime factors other than 2 and/or 5."
+            }
+        ]
 
-    for (
-        let index = 0;
-        index < requiredCount;
-        index++
-    ) {
+    },
 
-        const originalQuestion =
-            questions[index % questions.length];
+    "Social Science": {
 
-        generatedQuestions.push({
+        "Nationalism in India": [
+            {
+                question: "Who launched the Non-Cooperation Movement in India?",
+                options: [
+                    "Subhas Chandra Bose",
+                    "Mahatma Gandhi",
+                    "Jawaharlal Nehru",
+                    "Bhagat Singh"
+                ],
+                answer: 1,
+                explanation: "Mahatma Gandhi launched the Non-Cooperation Movement in 1920."
+            },
+            {
+                question: "The Rowlatt Act was passed in:",
+                options: [
+                    "1917",
+                    "1918",
+                    "1919",
+                    "1920"
+                ],
+                answer: 2,
+                explanation: "The Rowlatt Act was passed by the British government in 1919."
+            },
+            {
+                question: "The Jallianwala Bagh massacre took place in:",
+                options: [
+                    "Delhi",
+                    "Amritsar",
+                    "Lahore",
+                    "Mumbai"
+                ],
+                answer: 1,
+                explanation: "The Jallianwala Bagh massacre took place in Amritsar on 13 April 1919."
+            }
+        ]
 
-            ...originalQuestion,
+    },
 
-            uniqueTemporaryId:
-                `${settings.chapter}-${index + 1}`
+    English: {
 
-        });
-
-    }
-
-    return generatedQuestions;
-}
-
-
-/* =========================================
-   START PRACTICE
-========================================= */
-
-startPracticeBtn.addEventListener("click", function() {
-
-    if (!validateSetup()) {
-        return;
-    }
-
-    currentSettings = {
-
-        subject:
-            subjectSelect.value,
-
-        chapter:
-            chapterSelect.value,
-
-        chapterName:
-            getSelectedChapterName(),
-
-        practiceType:
-            practiceTypeSelect.value,
-
-        difficulty:
-            difficultySelect.value,
-
-        questionCount:
-            Number(questionCountSelect.value)
-
-    };
-
-    showScreen(loadingScreen);
-
-    loadingMessage.textContent =
-        "Preparing your practice questions...";
-
-    setTimeout(function() {
-
-        currentQuestions =
-            createTemporaryQuestions(
-                currentSettings
-            );
-
-        currentQuestionIndex = 0;
-
-        userAnswers =
-            new Array(
-                currentQuestions.length
-            ).fill(null);
-
-        isAnswerLocked = false;
-
-        practiceChapterName.textContent =
-            currentSettings.chapterName;
-
-        showScreen(practiceScreen);
-
-        renderCurrentQuestion();
-
-    }, 700);
-
-});
-
-
-/* =========================================
-   RENDER QUESTION
-========================================= */
-
-function renderCurrentQuestion() {
-
-    const question =
-        currentQuestions[currentQuestionIndex];
-
-    if (!quest
+        "A Letter to God": [
+            {
+                question: "Who is the main character in 'A Letter to God'?",
+                options: [
+                    "Lencho",
+                    "Postmaster",
+                    "The priest",
+                    "Pedro"
+                ],
+                answer: 0,
+                explanation: "Lencho is the main character of the story."
+            },
+            {
+                question: "What destroyed Lencho's crop?",
+                options: [
+                    "Drought",
+                    "Hailstorm",
+                    "Flood",
+                    "Fire"
+```
