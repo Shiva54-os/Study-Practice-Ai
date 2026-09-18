@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Study AI Practice</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         APP HEADER
+    ========================== -->
+    <header class="app-header">
+        <div class="brand">
+            <h1>Study AI</h1>
+            <span>Practice</span>
+        </div>
+    </header>
+
+
+    <!-- =========================
+         MAIN APP
+    ========================== -->
+    <main class="app-container">
+
+        <!-- =========================
+             SETUP SCREEN
+        ========================== -->
+        <section id="setupScreen" class="screen active">
+
+            <div class="hero-section">
+                <h2>Practice Smarter</h2>
+                <p>
+                    Practice Class 10 CBSE questions chapter-wise
+                    and improve your preparation.
+                </p>
+            </div>
+
+
+            <!-- SUBJECT -->
+            <div class="form-group">
+                <label for="subjectSelect">Subject</label>
+
+                <select id="subjectSelect">
+                    <option value="">Select Subject</option>
+                    <option value="science">Science</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="social-science">Social Science</option>
+                    <option value="english">English</option>
+                    <option value="hindi">Hindi</option>
+                </select>
+            </div>
+
+
+            <!-- CHAPTER -->
+            <div class="form-group">
+                <label for="chapterSelect">Chapter Name</label>
+
+                <select id="chapterSelect" disabled>
+                    <option value="">Select Chapter</option>
+                </select>
+            </div>
+
+
+            <!-- PRACTICE TYPE -->
+            <div class="form-group">
+                <label for="practiceTypeSelect">Practice Type</label>
+
+                <select id="practiceTypeSelect">
+                    <option value="">Select Practice Type</option>
+
+                    <option value="mcq">
+                        MCQ
+                    </option>
+
+                    <option value="very-short-answer">
+                        Very Short Answer
+                    </option>
+
+                    <option value="short-answer">
+                        Short Answer
+                    </option>
+
+                    <option value="long-answer">
+                        Long Answer
+                    </option>
+
+                    <option value="assertion-reason">
+                        Assertion–Reason
+                    </option>
+
+                    <option value="match-following">
+                        Match the Following
+                    </option>
+
+                    <option value="case-based">
+                        Case-Based
+                    </option>
+
+                    <option value="one-word">
+                        One-Word
+                    </option>
+
+                    <option value="mixed">
+                        Mixed Practice
+                    </option>
+                </select>
+            </div>
+
+
+            <!-- DIFFICULTY -->
+            <div class="form-group">
+                <label for="difficultySelect">Difficulty</label>
+
+                <select id="difficultySelect">
+                    <option value="">Select Difficulty</option>
+
+                    <option value="basic">
+                        Basic
+                    </option>
+
+                    <option value="important">
+                        Important
+                    </option>
+
+                    <option value="board">
+                        Board Level
+                    </option>
+
+                    <option value="mixed">
+                        Mixed Difficulty
+                    </option>
+                </select>
+            </div>
+
+
+            <!-- QUESTION COUNT -->
+            <div class="form-group">
+                <label for="questionCountSelect">
+                    Number of Questions
+                </label>
+
+                <select id="questionCountSelect">
+
+                    <option value="">Select Question Count</option>
+
+                    <option value="25">25 Questions</option>
+                    <option value="30">30 Questions</option>
+                    <option value="35">35 Questions</option>
+                    <option value="40">40 Questions</option>
+                    <option value="45">45 Questions</option>
+                    <option value="50">50 Questions</option>
+
+                </select>
+            </div>
+
+
+            <!-- START BUTTON -->
+            <button
+                id="startPracticeBtn"
+                class="primary-button"
+                type="button"
+            >
+                Start Practice
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================
+             PRACTICE SCREEN
+        ========================== -->
+        <section id="practiceScreen" class="screen">
+
+            <div class="practice-topbar">
+
+                <button
+                    id="backToSetupBtn"
+                    class="secondary-button"
+                    type="button"
+                >
+                    ← Back
+                </button>
+
+                <div class="practice-info">
+                    <span id="practiceChapterName">
+                        Chapter
+                    </span>
+
+                    <span id="questionProgress">
+                        Question 1 of 25
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+            <div class="progress-container">
+                <div
+                    id="progressBar"
+                    class="progress-bar"
+                ></div>
+            </div>
+
+
+            <!-- QUESTION AREA -->
+            <div id="questionContainer">
+
+                <!-- Questions will be inserted here by JavaScript -->
+
+            </div>
+
+
+            <!-- NEXT BUTTON -->
+            <div class="practice-actions">
+
+                <button
+                    id="nextQuestionBtn"
+                    class="primary-button"
+                    type="button"
+                >
+                    Next
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             RESULT SCREEN
+        ========================== -->
+        <section id="resultScreen" class="screen">
+
+            <div class="result-header">
+
+                <h2>Practice Complete</h2>
+
+                <p>
+                    Here is your practice result.
+                </p>
+
+            </div>
+
+
+            <!-- SCORE -->
+            <div class="score-card">
+
+                <div class="score-number">
+                    <span id="scoreValue">0</span>
+                </div>
+
+                <div class="score-details">
+
+                    <div>
+                        <strong id="correctValue">0</strong>
+                        <span>Correct</span>
+                    </div>
+
+                    <div>
+                        <strong id="wrongValue">0</strong>
+                        <span>Wrong</span>
+                    </div>
+
+                    <div>
+                        <strong id="accuracyValue">0%</strong>
+                        <span>Accuracy</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REVIEW -->
+            <div class="review-section">
+
+                <h3>Review Your Practice</h3>
+
+                <div id="reviewContainer">
+
+                    <!-- Review questions inserted by JavaScript -->
+
+                </div>
+
+            </div>
+
+
+            <!-- RESULT ACTIONS -->
+            <div class="result-actions">
+
+                <button
+                    id="newPracticeBtn"
+                    class="primary-button"
+                    type="button"
+                >
+                    New Practice
+                </button>
+
+                <button
+                    id="retestBtn"
+                    class="secondary-button"
+                    type="button"
+                >
+                    Retest
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             LOADING SCREEN
+        ========================== -->
+        <section id="loadingScreen" class="screen">
+
+            <div class="loading-box">
+
+                <div class="loader"></div>
+
+                <h2>Generating Practice</h2>
+
+                <p id="loadingMessage">
+                    Preparing your questions...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ERROR MESSAGE
+        ========================== -->
+        <div
+            id="errorMessage"
+            class="error-message"
+            role="alert"
+            aria-live="polite"
+        ></div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="app-footer">
+
+        <p>
+            Study AI Practice • Class 10 CBSE
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+                                                          </html>
